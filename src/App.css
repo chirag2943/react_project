@@ -2,6 +2,7 @@
 .App {
   background-image: linear-gradient(to  right,#4f2430,#74001f);
  height: 100px;
+ text-align: center;
 }
 
 .home{
