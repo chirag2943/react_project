@@ -12,7 +12,9 @@ export const Login = () => {
 
   return (
     <div className="signin">
-      <h1 className="signInMessage"> Sign in with google to continue</h1>
+      <h1 className="signInMessage">
+        Sign in with google to continue seeing posts
+      </h1>
       <button className="signInButton" onClick={signInWithGoogle}>
         sign in with google
       </button>

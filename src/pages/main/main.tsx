@@ -3,6 +3,7 @@ import { auth, db } from "../../config/firebase";
 import { useEffect, useState } from "react";
 import { Post } from "./post";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
 
 export interface postInterface {
   id: string;
@@ -16,6 +17,7 @@ export const Main = () => {
   const [postsList, setPostsList] = useState<postInterface[] | null>(null);
   const postRef = collection(db, "posts"); //reference of database
   const [user] = useAuthState(auth);
+  const navigate = useNavigate();
 
   const getPosts = async () => {
     //getting post from db
@@ -31,7 +33,11 @@ export const Main = () => {
 
   return (
     <div className="home">
-      {user ? postsList?.map((post) => <Post post={post} />) : <p>hello</p>}
+      {user ? (
+        postsList?.map((post) => <Post post={post} />)
+      ) : (
+        <>{navigate("/login")}</>
+      )}
     </div>
   );
 };
